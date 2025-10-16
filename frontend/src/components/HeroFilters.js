@@ -1,0 +1,10 @@
+import { createElement as _createElement } from "react";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Autocomplete, Chip, FormControl, InputLabel, MenuItem, Paper, Select, Stack, TextField, Typography, } from "@mui/material";
+const LANGUAGE_OPTIONS = [
+    { label: "English", value: "english" },
+    { label: "Japanese (beta)", value: "japanese" },
+];
+export function HeroFilters({ positions, selectedPositions, onPositionsChange, language, onLanguageChange, heroCount, }) {
+    return (_jsx(Paper, { elevation: 3, sx: { p: 3 }, children: _jsxs(Stack, { direction: { xs: "column", md: "row" }, spacing: 3, alignItems: "flex-start", children: [_jsxs(Stack, { spacing: 1, flex: 1, children: [_jsx(Typography, { variant: "subtitle2", color: "text.secondary", children: "\u30DD\u30B8\u30B7\u30E7\u30F3\u30D5\u30A3\u30EB\u30BF\u30FC" }), _jsx(Autocomplete, { multiple: true, value: selectedPositions, onChange: (_event, value, _reason) => onPositionsChange(value), options: positions, renderTags: (value, getTagProps) => value.map((option, index) => (_createElement(Chip, { ...getTagProps({ index }), key: option, label: option, color: "primary" }))), renderInput: (params) => (_jsx(TextField, { ...params, label: "\u30DD\u30B8\u30B7\u30E7\u30F3", placeholder: "\u9078\u629E\u3057\u305F\u3044\u30DD\u30B8\u30B7\u30E7\u30F3" })), sx: { minWidth: 240 } })] }), _jsxs(Stack, { spacing: 1, width: { xs: "100%", md: 220 }, children: [_jsx(Typography, { variant: "subtitle2", color: "text.secondary", children: "\u8868\u793A\u8A00\u8A9E" }), _jsxs(FormControl, { fullWidth: true, children: [_jsx(InputLabel, { id: "language-select-label", children: "Language" }), _jsx(Select, { labelId: "language-select-label", label: "Language", value: language, onChange: (event) => onLanguageChange(event.target.value), children: LANGUAGE_OPTIONS.map((option) => (_jsx(MenuItem, { value: option.value, children: option.label }, option.value))) })] }), _jsxs(Typography, { variant: "caption", color: "text.secondary", children: ["\u8868\u793A\u5BFE\u8C61\u30D2\u30FC\u30ED\u30FC: ", heroCount, " \u4F53"] })] })] }) }));
+}
