@@ -1,5 +1,5 @@
 service: dota2-assistant-backend
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 plugins:
   - serverless-esbuild
@@ -8,7 +8,7 @@ provider:
   name: aws
   runtime: nodejs18.x
   stage: ${opt:stage, 'dev'}
-  region: ${env:AWS_REGION, 'ap-northeast-1'}
+  region: ap-northeast-1
   environment:
     NODE_OPTIONS: --enable-source-maps
     HERO_CACHE_TABLE: ${self:custom.heroCacheTable}
@@ -32,7 +32,7 @@ provider:
             - dynamodb:GetItem
             - dynamodb:PutItem
           Resource:
-            - !GetAtt HeroCacheTable.Arn
+            - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.heroCacheTable}"
 
 functions:
   api:

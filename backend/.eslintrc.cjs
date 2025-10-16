@@ -1,42 +1,44 @@
 module.exports = {
   env: {
     node: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'prettier'
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "prettier",
   ],
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: './tsconfig.json'
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: "./tsconfig.json",
+    tsconfigRootDir: __dirname,
   },
-  plugins: ['@typescript-eslint', 'import'],
+  plugins: ["@typescript-eslint", "import"],
   rules: {
-    'import/order': [
-      'error',
+    "import/order": [
+      "error",
       {
-        'newlines-between': 'always',
-        alphabetize: { order: 'asc', caseInsensitive: true }
-      }
+        "newlines-between": "always",
+        alphabetize: { order: "asc", caseInsensitive: true },
+      },
     ],
-    '@typescript-eslint/no-unused-vars': [
-      'error',
+    "@typescript-eslint/no-unused-vars": [
+      "error",
       {
-        argsIgnorePattern: '^_'
-      }
-    ]
+        argsIgnorePattern: "^_",
+      },
+    ],
   },
   settings: {
-    'import/resolver': {
+    "import/resolver": {
       typescript: {
-        project: './tsconfig.json'
-      }
-    }
-  }
+        project: "./tsconfig.json",
+      },
+    },
+  },
+  ignorePatterns: ["*.cjs"],
 };
